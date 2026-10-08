@@ -3,10 +3,41 @@
 ## Overview
 Flappy Your Sound คือ
 
-| Student ID | Name | Duty | Percent | Image |
-| -------- | -------- | -------- | -------- | -------- |
-| 68070124  | นายพิชญ์พงศ์ บุญดี  | Hardware + ต่อวงจร + Microphone Sensor + ทดสอบการรับเสียง | 25% | <img alt="Peach" height="150" src="asset/image/68070124.jpg" width="150"/> |
-| 68070125 | นายพิชัยยุทธ ขวัญบุญ  | ทดสอบระบบ + ปรับความยาก + จัดทำรายงาน/สไลด์ + เตรียมนำเสนอ  | 25% | <img alt="Meen" height="150" src="asset/image/68070125.png" width="150"/> |
-| 68070153  | นายยศวัฒน์ อิ่มใจ  | ออกแบบระบบ + เขียนโปรแกรมหลักของเกม + ระบบการเคลื่อนที่  | 25% | <img alt="Tob" height="150" src="asset/image/68070153.jpg" width="150"/> |
-| 68070180  | นายสันต์ทัศน์ เชาว์กิติวุฒิ  | ออกแบบ UI/กราฟิก OLED + ระบบคะแนน + Collision/Game Over   | 25% | <img alt="katang" height="150" src="asset/image/68070180.jpg" width="150"/> |
+<table>
+  <tr>
+    <th width="110">Student ID</th>
+    <th width="250">Name</th>
+    <th width="450">Duty</th>
+    <th width="80">Percent</th>
+    <th width="170">Image</th>
+  </tr>
+  <tr>
+    <td>68070124</td>
+    <td>นายพิชญ์พงศ์ บุญดี</td>
+    <td>Hardware + ต่อวงจร + Microphone Sensor + ทดสอบการรับเสียง</td>
+    <td>25%</td>
+    <td><img alt="Peach" height="150" src="asset/image/68070124.jpg" width="150"/></td>
+  </tr>
+  <tr>
+    <td>68070125</td>
+    <td>นายพิชัยยุทธ ขวัญบุญ</td>
+    <td>ทดสอบระบบ + ปรับความยาก + จัดทำรายงาน/สไลด์ + เตรียมนำเสนอ</td>
+    <td>25%</td>
+    <td><img alt="Meen" height="150" src="asset/image/68070125.png" width="150"/></td>
+  </tr>
+  <tr>
+    <td>68070153</td>
+    <td>นายยศวัฒน์ อิ่มใจ</td>
+    <td>ออกแบบระบบ + เขียนโปรแกรมหลักของเกม + ระบบการเคลื่อนที่</td>
+    <td>25%</td>
+    <td><img alt="Tob" height="150" src="asset/image/68070153.jpg" width="150"/></td>
+  </tr>
+  <tr>
+    <td>68070180</td>
+    <td>นายสันต์ทัศน์ เชาว์กิติวุฒิ</td>
+    <td>ออกแบบ UI/กราฟิก OLED + ระบบคะแนน + Collision/Game Over</td>
+    <td>25%</td>
+    <td><img alt="katang" height="150" src="asset/image/68070180.jpg" width="150"/></td>
+  </tr>
+</table>
 

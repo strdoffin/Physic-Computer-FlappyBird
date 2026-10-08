@@ -6,7 +6,7 @@ Flappy Your Sound คือ
 <table>
   <tr>
     <th width="110">Student ID</th>
-    <th width="250">Name</th>
+    <th width="300">Name</th>
     <th width="450">Duty</th>
     <th width="80">Percent</th>
     <th width="170">Image</th>

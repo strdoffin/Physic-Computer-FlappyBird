@@ -1,11 +1,7 @@
 # Physical Computing Project 2026 - IT KMITL
 
 ## Overview
-Flappy Your Sound คือ
-
-เกม Flappy Bird ที่ควบคุมด้วย **เสียงของนักร้อง** ผ่านเซนเซอร์เสียงของ **Arduino UNO R4 WiFi** ส่งข้อมูลแบบเรียลไทม์ด้วย **WebSocket** ไปยังเว็บแอปที่สร้างด้วย **Next.js**
-
----
+Flappy Your Sound คือ โปรเจกต์ที่ฝึกควบคุมเสียงให้กลายเป็นเกม Flappy Bird โดยใช้ไมโครโฟนเซนเซอร์วัดระดับความดังของเสียงผ่านไมโครคอนโทรลเลอร์ Arduino UNO R4 WiFi และส่งข้อมูลระดับเสียงเข้าสู่เว็บแอปพลิเคชันโดยตรงแบบเรียลไทม์ด้วย Web Serial API ตัวเกมพัฒนาด้วย HTML5 และ JavaScript ช่วยให้ผู้ฝึกซ้อมสามารถเห็นผลลัพธ์การคุมระดับเสียงของตนเองได้ทันทีผ่านการตอบสนองของตัวเกม ช่วยแก้ปัญหาการฝึกซ้อมที่น่าเบื่อและช่วยให้เห็นพัฒนาการอย่างเป็นรูปธรรม
 
 ## 🎯 แก้ปัญหาอะไร
 
@@ -33,24 +29,20 @@ Flappy Your Sound คือ
 1. ไมค์จับเสียงนักร้อง Arduino อ่านระดับความดัง
 2. ถ้าดังถึงเกณฑ์ ก็ส่งสัญญาณไปที่เว็บ
 3. นกกระโดดบนจอ ผู้เล่นเห็นทันทีว่าเสียงของตัวเองส่งผลอย่างไร
-4. คะแนนบอกว่าคุมเสียงได้ดีแค่ไหน และปรับเกณฑ์ให้ยากขึ้นได้เมื่อเก่งขึ้น
 
 ### Data flow
 
 ```text
 Microphone / Sound Sensor
-          |
+          | (Analog Read)
           v
 Arduino UNO R4 WiFi
-          |  WebSocket
+          | (Serial Stream via USB)
           v
-Node.js WebSocket Server (port 8080)
-          |  WebSocket broadcast
+Web Browser (Web Serial API)
+          | (Parse Serial Data)
           v
-Next.js Browser
-          |
-          v
-HTML5 Canvas -> Flappy Bird Game
+HTML5 Canvas -> Flappy Bird Game (JavaScript)
 ```
 
 ## 📥 Input และ 📤 Output
@@ -72,10 +64,10 @@ HTML5 Canvas -> Flappy Bird Game
 
 | ส่วน | เทคโนโลยี |
 |---|---|
-| ฮาร์ดแวร์ | Arduino UNO R4 WiFi, Analog sound sensor, สายจัมเปอร์, สาย USB |
-| Server | Node.js, `ws` |
-| Frontend | Next.js (App Router), React, TypeScript, HTML5 Canvas, CSS Modules |
-| การสื่อสาร | WebSocket, JSON |
+| ฮาร์ดแวร์ | Arduino UNO R4 WiFi, Analog Sound Sensor, สายจัมเปอร์, สาย USB Type-C |
+| ฮาร์ดแวร์เฟิร์มแวร์ | Arduino C/C++ (Serial.println()) |
+| การสื่อสารฮาร์ดแวร์-เว็บ | Web Serial API (Native Browser API) |
+| Frontend & Game Logic | HTML5, CSS3, JavaScript (ES6+), HTML5 Canvas API |
 
 ## 🔌 การต่อสาย
 
@@ -87,28 +79,7 @@ GND       --------> GND
 AO        --------> A0
 ```
 
-## 🚀 วิธีรันโปรเจกต์
-
-```bash
-# ติดตั้ง dependencies
-npm install
-
-# เริ่ม WebSocket server (พอร์ต 8080)
-npm run ws
-
-# เริ่ม Next.js (พอร์ต 3000)
-npm run dev
-```
-
 เปิดเบราว์เซอร์ที่ <http://localhost:3000>
-
-> ทดสอบโดยไม่มี Arduino ได้ ให้กด `SPACE` เพื่อสั่งให้นกกระโดด
-
-## 📝 หมายเหตุ
-
-- Arduino กับคอมพิวเตอร์ต้องอยู่ในเครือข่าย Wi-Fi เดียวกัน (UNO R4 WiFi รองรับ 2.4 GHz)
-- ค่า `SOUND_THRESHOLD` ปรับได้ เพราะเซนเซอร์แต่ละรุ่นให้ค่าไม่เท่ากัน
-- ต้องเปิดพอร์ต `8080` บนไฟร์วอลล์ของคอมพิวเตอร์
 
 
 <table>

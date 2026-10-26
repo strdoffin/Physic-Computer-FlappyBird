@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kadodzing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-slate-900 text-slate-300">
+    <!-- ===== Navbar ===== -->
+    <nav class="sticky top-0 z-10 border-b border-slate-700 bg-slate-900/95">
+      <div
+        class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3"
+      >
+        <a href="#home" class="font-semibold text-green-400"
+          >Kadodzing</a
+        >
+        <button
+          id="menu-btn"
+          class="rounded border border-slate-600 px-3 py-1 text-sm md:hidden"
+        >
+          เมนู
+        </button>
+        <div id="menu" class="hidden gap-5 text-sm md:flex">
+          <a href="#about" class="hover:text-green-400">เกี่ยวกับ</a>
+          <a href="#objectives" class="hover:text-green-400">วัตถุประสงค์</a>
+          <a href="#how" class="hover:text-green-400">หลักการทำงาน</a>
+          <a href="#play" class="hover:text-green-400">เล่นเกม</a>
+          <a href="#hardware" class="hover:text-green-400">ฮาร์ดแวร์</a>
+          <a href="#tools" class="hover:text-green-400">เครื่องมือ</a>
+          <a href="#team" class="hover:text-green-400">ทีมงาน</a>
+          <a href="#outcomes" class="hover:text-green-400">ผลที่คาดหวัง</a>
+        </div>
+      </div>
+      <!-- mobile menu -->
+      <div
+        id="mobile-menu"
+        class="hidden flex-col border-t border-slate-700 px-4 py-2 text-sm md:hidden"
+      >
+        <a href="#about" class="py-1">เกี่ยวกับ</a>
+        <a href="#objectives" class="py-1">วัตถุประสงค์</a>
+        <a href="#how" class="py-1">หลักการทำงาน</a>
+        <a href="#play" class="py-1">เล่นเกม</a>
+        <a href="#hardware" class="py-1">ฮาร์ดแวร์</a>
+        <a href="#tools" class="py-1">เครื่องมือ</a>
+        <a href="#team" class="py-1">ทีมงาน</a>
+        <a href="#outcomes" class="py-1">ผลที่คาดหวัง</a>
+      </div>
+    </nav>
+
+    <main class="mx-auto max-w-5xl px-4">
+      <!-- ===== 1. Hero ===== -->
+      <section id="home" class="grid items-center gap-8 py-16 md:grid-cols-2">
+        <div>
+          <p class="text-sm text-cyan-400">Student Project · Arduino</p>
+          <h1 class="mt-2 text-4xl font-semibold text-white">
+            Kadodzing
+          </h1>
+          <p class="mt-4">
+            เกม Flappy Bird ที่ใช้ระดับเสียงเป็นตัวควบคุม โดย Arduino UNO R4
+            WiFi อ่านค่าความดังจากไมโครโฟนเซนเซอร์
+            แล้วส่งข้อมูลไปยังเว็บแอปพลิเคชันเพื่อควบคุมการเคลื่อนที่ของนก
+            ผู้เล่นสามารถฝึกควบคุมเสียงและเห็นผลตอบสนองของเกมได้แบบเรียลไทม์
+          </p>
+          <a
+            href="#play"
+            class="mt-6 inline-block rounded bg-green-500 px-5 py-2 font-semibold text-slate-900 hover:bg-green-400"
+            >เล่นเกม</a
+          >
+        </div>
+        <!-- simple game picture -->
+        <svg
+          viewBox="0 0 300 200"
+          class="w-full rounded-lg border border-slate-700"
+        >
+          <rect width="300" height="200" fill="#0f172a" />
+          <rect x="170" y="0" width="40" height="70" fill="#22c55e" />
+          <rect x="170" y="130" width="40" height="55" fill="#22c55e" />
+          <rect x="0" y="185" width="300" height="15" fill="#334155" />
+          <circle cx="90" cy="100" r="14" fill="#facc15" />
+          <circle cx="96" cy="95" r="3" fill="#0f172a" />
+          <text x="20" y="30" fill="#22d3ee" font-size="14">♪ ♪ ♪</text>
+        </svg>
+      </section>
+
+      <!-- ===== 2. About ===== -->
+      <section id="about" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">เกี่ยวกับโครงงาน</h2>
+        <div class="mt-4 space-y-3">
+          <p>
+            โครงงาน Kadodzing
+            เป็นการพัฒนาเกมที่ประยุกต์ใช้ระดับความดังของเสียงในการควบคุมตัวละครภายในเกม
+            Flappy Bird โดยมีวัตถุประสงค์เพื่อศึกษาและประยุกต์ใช้ความรู้ด้าน
+            Physical Computing
+            ในการเชื่อมต่ออุปกรณ์ฮาร์ดแวร์เข้ากับเว็บแอปพลิเคชัน ระบบใช้บอร์ด
+            Arduino UNO R4 WiFi ร่วมกับเซนเซอร์รับเสียง MAX9814
+            ซึ่งเชื่อมต่อกับขา A0 เพื่อรับสัญญาณเสียงและอ่านค่าระดับเสียง
+            จากนั้นส่งข้อมูลไปยังเว็บแอปพลิเคชันผ่าน USB Serial โดยอาศัย Web
+            Serial API เว็บไซต์จะนำค่าระดับเสียงที่ได้รับมาเปรียบเทียบกับค่า
+            Threshold ที่กำหนดไว้ หากระดับเสียงถึงเกณฑ์ที่กำหนด
+            ระบบจะสั่งให้ตัวละครนกบินขึ้น
+            เพื่อให้ผู้เล่นสามารถควบคุมเกมด้วยเสียงแทนการใช้ปุ่มควบคุมแบบทั่วไป
+            โครงงานนี้เป็นการนำเทคโนโลยีไมโครคอนโทรลเลอร์และเว็บเทคโนโลยีมาประยุกต์ใช้ร่วมกัน
+            เพื่อสร้างรูปแบบการเล่นเกมที่มีปฏิสัมพันธ์กับผู้เล่นผ่านเสียง
+          </p>
+        </div>
+      </section>
+
+      <!-- ===== 3. Objectives ===== -->
+      <section id="objectives" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">วัตถุประสงค์</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">
+              1. เรียนรู้ Arduino และเซนเซอร์
+            </h3>
+            <p class="mt-1 text-sm">
+              ศึกษาการอ่านค่า Analog จากไมโครโฟน และการวัดระยะด้วย Ultrasonic
+            </p>
+          </div>
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">
+              2. ควบคุมด้วยเสียงแบบ Real-time
+            </h3>
+            <p class="mt-1 text-sm">
+              ประมวลผลเสียงและสั่งให้นกกระโดดได้ทันทีที่ส่งเสียง
+            </p>
+          </div>
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">
+              3. เชื่อม Hardware กับ Software
+            </h3>
+            <p class="mt-1 text-sm">
+              ส่งข้อมูลจาก Arduino ไปยังเว็บไซต์ผ่าน USB Serial
+            </p>
+          </div>
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">4. วิธีควบคุมเกมแบบใหม่</h3>
+            <p class="mt-1 text-sm">
+              เล่นเกมโดยไม่ต้องกดปุ่ม ใช้เสียงหรือมือแทน
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 4. How it works ===== -->
+      <section id="how" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">หลักการทำงาน</h2>
+        <div class="mt-4 grid gap-4 md:grid-cols-3">
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <p class="text-sm text-cyan-400">ขั้นที่ 1 · Input</p>
+            <h3 class="font-semibold text-white">Microphone</h3>
+            <p class="mt-1 text-sm">
+              ไมโครโฟนแปลงเสียงเป็นสัญญาณไฟฟ้า ส่งเข้าขา A0
+            </p>
+          </div>
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <p class="text-sm text-cyan-400">ขั้นที่ 2 · Process</p>
+            <h3 class="font-semibold text-white">Arduino</h3>
+            <p class="mt-1 text-sm">
+              คำนวณความดัง ถ้าเกิน Threshold จะส่ง <code>JUMP!</code>
+            </p>
+          </div>
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <p class="text-sm text-cyan-400">ขั้นที่ 3 · Output</p>
+            <h3 class="font-semibold text-white">เกมบนเว็บ</h3>
+            <p class="mt-1 text-sm">
+              เว็บรับคำสั่งผ่าน USB แล้ววาดนก ท่อ และคะแนนบน Canvas
+            </p>
+          </div>
+        </div>
+        <ul class="mt-4 list-disc space-y-1 pl-5 text-sm">
+          <li><b class="text-green-400">เสียงดัง</b> → นกบินขึ้น</li>
+          <li><b class="text-cyan-400">เสียงเบา</b> → นกตกลงตามแรงโน้มถ่วง</li>
+          <li>
+            <b class="text-white">โหมดมือ</b> → ยกมือสูง-ต่ำเหนือเซนเซอร์
+            Ultrasonic นกจะบินตามความสูงของมือ (เอามือเข้าใกล้กว่า 10 cm =
+            เริ่มเกม)
+          </li>
+        </ul>
+      </section>
+
+      <!-- ===== 5. Play ===== -->
+      <section id="play" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">ทดลองเล่นเกม</h2>
+        <p class="mt-1 text-sm">
+          กด SPACE หรือคลิกที่เกมเพื่อทดสอบ หรือเชื่อมต่อ Arduino แล้วใช้เสียง
+        </p>
+
+        <div class="mt-4 grid gap-6 md:grid-cols-[400px_1fr]">
+          <canvas
+            id="game"
+            width="400"
+            height="600"
+            class="w-full max-w-[400px] rounded-lg border border-slate-700"
+          ></canvas>
+
+          <div class="space-y-4">
+            <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+              <h3 class="font-semibold text-white">Arduino</h3>
+              <p class="mt-1 text-sm">
+                สถานะ:
+                <span id="status" class="text-red-400">ยังไม่เชื่อมต่อ</span>
+              </p>
+              <button
+                id="connect-btn"
+                class="mt-3 w-full rounded bg-green-500 py-2 font-semibold text-slate-900 hover:bg-green-400"
+              >
+                เชื่อมต่อผ่าน USB
+              </button>
+              <p class="mt-2 text-xs text-slate-400">
+                ใช้ Chrome หรือ Edge และปิด Serial Monitor ก่อน
+              </p>
+            </div>
+
+            <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+              <h3 class="font-semibold text-white">
+                ระดับเสียง: <span id="level-text">0</span>
+              </h3>
+              <div class="mt-2 h-3 rounded bg-slate-700">
+                <div id="level-bar" class="h-3 w-0 rounded bg-green-400"></div>
+              </div>
+              <label for="threshold" class="mt-4 block text-sm"
+                >Threshold: <span id="threshold-text">350</span></label
+              >
+              <input
+                id="threshold"
+                type="range"
+                min="20"
+                max="1000"
+                step="10"
+                value="350"
+                class="w-full"
+              />
+              <p id="threshold-msg" class="text-xs text-slate-400">
+                ค่าน้อย = ไวขึ้น · ค่ามาก = ต้องเสียงดังขึ้น
+              </p>
+            </div>
+
+            <div
+              class="rounded-lg border border-slate-700 bg-slate-800 p-5 text-sm"
+            >
+              <p>โหมด: <span id="mode-text" class="text-white">เสียง</span></p>
+              <p>
+                คะแนน: <span id="score-text" class="text-white">0</span> ·
+                สูงสุด: <span id="best-text" class="text-white">0</span>
+              </p>
+              <p class="mt-2 text-xs text-slate-400">
+                ปุ่ม START = เริ่มเกม · ปุ่ม MODE = สลับโหมดเสียง/มือ
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 6. Hardware ===== -->
+      <section id="hardware" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">อุปกรณ์ฮาร์ดแวร์</h2>
+
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <!-- Arduino -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">Arduino UNO R4 WiFi</h3>
+            <p class="mt-1 text-sm">
+              บอร์ดไมโครคอนโทรลเลอร์หลักสำหรับอ่านค่าเซนเซอร์
+              และควบคุมการทำงานของระบบ
+            </p>
+          </div>
+
+          <!-- LCD I2C -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">LCD 16x2 I2C</h3>
+            <p class="mt-1 text-sm">
+              จอแสดงผลสำหรับแสดงข้อมูลของระบบ โดยเชื่อมต่อผ่าน I2C
+              ช่วยลดจำนวนสายที่ใช้
+            </p>
+          </div>
+
+          <!-- Ultrasonic -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">Ultrasonic HC-SR04</h3>
+            <p class="mt-1 text-sm">
+              เซนเซอร์วัดระยะทาง ใช้ตรวจจับระยะห่างของมือ
+              เพื่อควบคุมเกมในโหมดมือ
+            </p>
+          </div>
+
+          <!-- Microphone -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">MAX9814 Microphone</h3>
+            <p class="mt-1 text-sm">
+              ไมโครโฟนพร้อมวงจรขยายสัญญาณ ใช้รับเสียงและอ่านระดับเสียง
+              เพื่อนำมาใช้ควบคุมเกม
+            </p>
+          </div>
+
+          <!-- Buttons -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">Push Button ×2</h3>
+            <p class="mt-1 text-sm">
+              ปุ่มกด 2 ปุ่มสำหรับเลือกโหมดเสียงและโหมดมือ
+            </p>
+          </div>
+
+          <!-- Breadboard -->
+          <div class="rounded-lg border border-slate-700 bg-slate-800 p-5">
+            <h3 class="font-semibold text-white">
+              Breadboard &amp; Jumper Wires
+            </h3>
+            <p class="mt-1 text-sm">
+              ใช้เชื่อมต่ออุปกรณ์และประกอบวงจรโดยไม่ต้องบัดกรี
+            </p>
+          </div>
+        </div>
+
+        <h3 class="mt-8 font-semibold text-white">การต่อขา</h3>
+
+        <div class="mt-2 overflow-x-auto">
+          <table class="w-full min-w-[420px] text-left text-sm">
+            <thead class="text-slate-400">
+              <tr>
+                <th class="py-2">อุปกรณ์</th>
+                <th>ขาอุปกรณ์</th>
+                <th>ขา Arduino</th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-slate-700">
+              <!-- LCD I2C -->
+              <tr>
+                <td class="py-2">LCD I2C</td>
+                <td>VCC / GND / SDA / SCL</td>
+                <td>5V / GND / A4 / A5</td>
+              </tr>
+
+              <!-- Ultrasonic -->
+              <tr>
+                <td class="py-2">HC-SR04</td>
+                <td>VCC / GND / Trig / Echo</td>
+                <td>5V / GND / D10 / D11</td>
+              </tr>
+
+              <!-- MAX9814 -->
+              <tr>
+                <td class="py-2">MAX9814</td>
+                <td>GND / VDD (VCC) / OUT</td>
+                <td>GND / 5V / A0</td>
+              </tr>
+
+              <!-- Button 1 -->
+              <tr>
+                <td class="py-2">ปุ่มเลือกโหมดเสียง</td>
+                <td>ขา 1 / ขา 2</td>
+                <td>D12 / GND</td>
+              </tr>
+
+              <!-- Button 2 -->
+              <tr>
+                <td class="py-2">ปุ่มเลือกโหมดมือ</td>
+                <td>ขา 1 / ขา 2</td>
+                <td>A2 / GND</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===== 7. Tools ===== -->
+      <section id="tools" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">ไลบรารีและเครื่องมือ</h2>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          <li class="rounded-lg border border-slate-700 bg-slate-800 p-4">
+            <b class="text-white">Arduino IDE</b> — เขียนและอัปโหลดโค้ดลงบอร์ด
+          </li>
+          <li class="rounded-lg border border-slate-700 bg-slate-800 p-4">
+            <b class="text-white">Web Serial API</b> — ให้เว็บอ่านข้อมูลจาก
+            Arduino ผ่าน USB
+          </li>
+          <li class="rounded-lg border border-slate-700 bg-slate-800 p-4">
+            <b class="text-white">HTML5 Canvas + JavaScript</b> —
+            วาดและควบคุมเกม
+          </li>
+          <li class="rounded-lg border border-slate-700 bg-slate-800 p-4">
+            <b class="text-white">HTML + Tailwind CSS</b> — สร้างหน้าเว็บ
+          </li>
+        </ul>
+      </section>
+
+      <!-- ===== 8. Team ===== -->
+      <section id="team" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">สมาชิกในทีม</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          <div
+            class="rounded-lg border border-slate-700 bg-slate-800 p-5 text-center flex flex-col items-center"
+          >
+            <img class="w-32 h-32 mb-5" src="asset/image/68070124.jpg" alt="" />
+            <p class="font-semibold text-white">พีชยพง บุญดี</p>
+            <p class="text-sm text-cyan-400">68070124p>
+            <p class="mt-2 text-sm">ส่วนร่วม 25%</p>
+          </div>
+          <div
+            class="rounded-lg border border-slate-700 bg-slate-800 p-5 text-center flex flex-col items-center"
+          >
+            <img class="w-32 h-32 mb-5" src="asset/image/68070125.png" alt="" />
+            <p class="font-semibold text-white">พิชัยยุทธ ขวัญบุญ</p>
+            <p class="text-sm text-cyan-400">68070125</p>
+            <p class="mt-2 text-sm">ส่วนร่วม 25%</p>
+          </div>
+          <div
+            class="rounded-lg border border-slate-700 bg-slate-800 p-5 text-center flex flex-col items-center"
+          >
+            <img class="w-32 h-32 mb-5" src="asset/image/68070153.jpg" alt="" />
+            <p class="font-semibold text-white">ยศวัฒน์ อิ่มใจ</p>
+            <p class="text-sm text-cyan-400">68070153</p>
+            <p class="mt-2 text-sm">ส่วนร่วม 25%</p>
+          </div>
+          <div
+            class="rounded-lg border border-slate-700 bg-slate-800 p-5 text-center flex flex-col items-center"
+          >
+            <img class="w-32 h-32 mb-5" src="asset/image/68070180.jpg" alt="" />
+            <p class="font-semibold text-white">สันต์ทัสน์ เชาว์กิติวุฒิ</p>
+            <p class="text-sm text-cyan-400">68070180</p>
+            <p class="mt-2 text-sm">ส่วนร่วม 25%</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== 9. Outcomes ===== -->
+      <section id="outcomes" class="py-12">
+        <h2 class="text-2xl font-semibold text-white">ผลที่คาดว่าจะได้รับ</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5">
+          <li>ต้นแบบเกม Flappy Bird ที่ควบคุมด้วยเสียงได้จริง</li>
+          <li>เกมบนเว็บที่มีกราฟิกและระบบคะแนน</li>
+          <li>
+            เข้าใจการทำงานร่วมกันของเซนเซอร์ ไมโครคอนโทรลเลอร์ และซอฟต์แวร์
+          </li>
+          <li>ต่อยอดได้ เช่น เพิ่มจอ LCD แสดงคะแนน หรือเพิ่มระดับความยาก</li>
+        </ul>
+      </section>
+
+<section id="source-code" class="my-8 p-8">
+  <details class="group overflow-hidden rounded-xl border border-gray-700 bg-[#1e1e1e] p-8">
+  <div class="flex items-center justify-between rounded-t-xl bg-[#252526] px-4 py-3">
+    <div class="flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-red-500"></span>
+      <span class="h-3 w-3 rounded-full bg-yellow-500"></span>
+      <span class="h-3 w-3 rounded-full bg-green-500"></span>
+      <span class="ml-3 text-sm text-gray-300">flappy_your_sound.ino</span>
+    </div>
+
+    <button
+      id="copyCode"
+      class="rounded-md border border-gray-600 px-3 py-1.5 text-sm text-gray-200 hover:bg-gray-700"
+      type="button"
+    >
+      Copy Code
+    </button>
+  </div>
+
+  <div class="overflow-hidden rounded-b-xl border border-gray-700 bg-[#1e1e1e]">
+    <pre class="overflow-x-auto p-4 text-sm leading-6 text-gray-200"><code id="arduinoCode" class="language-cpp">#include &lt;Arduino.h&gt;
+
+/*
+ * Voice-Controlled Flappy Bird - Arduino
+ *
+ * Board: Arduino UNO R3 or UNO R4
+ *
+ * Wiring (same pins as the full version)
+ *   MAX9814 mic        OUT -> A0     VDD -> 5V    GND -> GND
+ *   HC-SR04            Trig -> D10   Echo -> D11  VCC -> 5V  GND -> GND
+ *   START button       D12 -> button -> GND
+ *   CALIBRATE button   A1  -> button -> GND
+ *   MODE button        A2  -> button -> GND
+ *
+ * Buttons
+ *   START      start / restart the game
+ *   CALIBRATE  listen to the room for 2 s, then set the threshold automatically
+ *   MODE       switch between voice mode and hand mode (ultrasonic)
+ *
+ * Messages sent to the website (115200 baud, one per line)
+ *   182            loudness of the sound (every 20 ms)
+ *   JUMP!          voice mode: sound louder than the threshold
+ *                  hand mode: hand moved closer than 10 cm
+ *   DIST:23        hand distance in cm, smoothed (every 50 ms, 0 = no hand)
+ *   MODE:VOICE / MODE:HAND
+ *   CMD:START      START button pressed
+ *   CAL:START / CAL:DONE
+ *   THRESHOLD:350  current threshold
+ *
+ * Messages received from the website
+ *   T400           set threshold to 400
+ *   ?              ask for the current threshold
+ */
+
+const int MIC_PIN = A0;
+const int TRIG_PIN = 10;
+const int ECHO_PIN = 11;
+const int START_PIN = 12;
+const int MODE_PIN = A2;
+
+const int SAMPLE_MS = 20;       // measure loudness over 20 ms
+const int COOLDOWN_MS = 250;    // minimum time between two jumps
+const int DIST_EVERY_MS = 50;   // read the ultrasonic every 50 ms
+const int MAX_CM = 60;          // readings further than this are ignored
+const int MAX_MISSES = 5;       // keep the last distance for 5 bad readings (0.25 s)
+const int HAND_JUMP_CM = 10;    // hand mode: hand closer than this = jump
+const int CLICK_IGNORE_MS = 300; // ignore sound after a button press (the mic hears the click)
+
+int threshold = 350;
+bool handMode = false;
+bool handNear = false;
+int distance = 0;               // smoothed distance in cm (0 = no hand)
+int lastThree[3];               // last 3 good readings (for the median)
+int nextSlot = 0;
+int misses = 0;
+
+unsigned long lastJump = 0;
+unsigned long lastDist = 0;
+unsigned long ledOffTime = 0;
+unsigned long ignoreSoundUntil = 0;
+String input = "";
+
+// One push button (debounced)
+struct Button {
+  int pin;
+  bool lastReading;       // last value from digitalRead
+  bool isDown;            // stable state: true = pressed
+  unsigned long changed;  // when the reading last changed
+};
+Button startButton = {START_PIN, HIGH, false, 0};
+Button calButton   = {CAL_PIN,   HIGH, false, 0};
+Button modeButton  = {MODE_PIN,  HIGH, false, 0};
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(START_PIN, INPUT_PULLUP);   // pressed = LOW
+  pinMode(CAL_PIN, INPUT_PULLUP);
+  pinMode(MODE_PIN, INPUT_PULLUP);
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  printThreshold();
+  Serial.println("MODE:VOICE");
+}
+
+void loop() {
+  readWebsite();
+  readButtons();
+
+  if (millis() - lastDist >= DIST_EVERY_MS) {
+    lastDist = millis();
+    distance = readSmoothDistance();
+    Serial.print("DIST:");
+    Serial.println(distance);
+    if (handMode) checkHand();
+  }
+
+  int volume = readVolume();
+  Serial.println(volume);
+
+  // The mic hears the click of a button: ignore sound while a button is down and 300 ms after
+  if (anyButtonDown()) ignoreSoundUntil = millis() + CLICK_IGNORE_MS;
+  bool soundAllowed = millis() >= ignoreSoundUntil;
+
+  if (!handMode && soundAllowed && volume > threshold && millis() - lastJump >= COOLDOWN_MS) {
+    jump();
+  }
+
+  if (ledOffTime != 0 && millis() >= ledOffTime) {
+    digitalWrite(LED_BUILTIN, LOW);
+    ledOffTime = 0;
+  }
+}
+
+void jump() {
+  lastJump = millis();
+  Serial.println("JUMP!");
+  digitalWrite(LED_BUILTIN, HIGH);   // the "L" LED blinks on every jump
+  ledOffTime = millis() + 80;
+}
+
+// Hand mode: moving the hand closer than HAND_JUMP_CM counts as one jump.
+// The hand must move away (more than HAND_JUMP_CM + 3 cm) before it can jump again.
+void checkHand() {
+  if (!handNear && distance > 0 && distance < HAND_JUMP_CM) {
+    handNear = true;
+    if (millis() - lastJump >= COOLDOWN_MS) jump();
+  } else if (handNear && (distance == 0 || distance > HAND_JUMP_CM + 3)) {
+    handNear = false;
+  }
+}
+
+// Loudness = highest reading - lowest reading in SAMPLE_MS
+int readVolume() {
+  int low = 1023;
+  int high = 0;
+  unsigned long start = millis();
+  while (millis() - start < SAMPLE_MS) {
+    int value = analogRead(MIC_PIN);
+    low = min(low, value);
+    high = max(high, value);
+  }
+  return high - low;
+}
+
+// Smoothed distance:
+//  1. a missed echo (0) or a reading further than MAX_CM keeps the last distance,
+//     and only after MAX_MISSES bad readings in a row do we report 0 (hand gone)
+//  2. the median of the last 3 good readings removes single wrong readings (spikes)
+int readSmoothDistance() {
+  int cm = readDistance();
+
+  if (cm == 0 || cm > MAX_CM) {
+    misses++;
+    if (misses > MAX_MISSES) return 0;
+    return distance;
+  }
+  misses = 0;
+
+  if (distance == 0) {              // hand just appeared: start the history fresh
+    lastThree[0] = cm;
+    lastThree[1] = cm;
+    lastThree[2] = cm;
+  }
+  lastThree[nextSlot] = cm;
+  nextSlot = (nextSlot + 1) % 3;
+  return medianOf3(lastThree[0], lastThree[1], lastThree[2]);
+}
+
+int medianOf3(int a, int b, int c) {
+  return max(min(a, b), min(max(a, b), c));
+}
+
+// Raw distance in cm from the HC-SR04 (0 = no echo within ~2 m)
+int readDistance() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  long duration = pulseIn(ECHO_PIN, HIGH, 12000);
+  return duration / 58;
+}
+
+void readButtons() {
+  if (wasPressed(startButton)) {
+    Serial.println("CMD:START");
+  }
+  if (wasPressed(calButton)) {
+    calibrate();
+  }
+  if (wasPressed(modeButton)) {
+    handMode = !handMode;
+    handNear = false;
+    Serial.println(handMode ? "MODE:HAND" : "MODE:VOICE");
+  }
+}
+
+bool anyButtonDown() {
+  return digitalRead(START_PIN) == LOW || digitalRead(CAL_PIN) == LOW || digitalRead(MODE_PIN) == LOW;
+}
+
+// True once per press. Button contacts bounce, so the reading must stay
+// the same for 15 ms before it counts, and the button must be released
+// before it can count again.
+bool wasPressed(Button &b) {
+  bool reading = digitalRead(b.pin);
+  if (reading != b.lastReading) {
+    b.lastReading = reading;
+    b.changed = millis();
+  }
+  if (millis() - b.changed < 15) return false;   // still bouncing
+
+  bool down = (reading == LOW);
+  bool justPressed = down && !b.isDown;
+  b.isDown = down;
+  return justPressed;
+}
+
+// Listen to the room for 2 seconds, then
+// threshold = loudest noise x 1.5 + 30  (between 40 and 1000)
+void calibrate() {
+  Serial.println("CAL:START");
+  delay(300);                          // let the button click fade
+
+  int loudest = 0;
+  for (int i = 0; i < 100; i++) {      // 100 x 20 ms = 2 seconds
+    int volume = readVolume();
+    Serial.println(volume);
+    loudest = max(loudest, volume);
+  }
+  threshold = constrain(loudest + loudest / 2 + 30, 40, 1000);
+
+  Serial.println("CAL:DONE");
+  printThreshold();
+}
+
+void printThreshold() {
+  Serial.print("THRESHOLD:");
+  Serial.println(threshold);
+}
+
+// Read "T400" or "?" lines from the website
+void readWebsite() {
+  while (Serial.available() > 0) {
+    char c = Serial.read();
+    if (c == '\n') {
+      if (input.startsWith("T")) {
+        int value = input.substring(1).toInt();
+        if (value > 0 && value <= 1023) threshold = value;
+        printThreshold();
+      } else if (input == "?") {
+        printThreshold();
+      }
+      input = "";
+    } else if (c != '\r') {
+      input += c;
+    }
+  }
+}</code></pre>
+  </div>
+ </details>
+</section>
+
+<script>
+  document.getElementById("copyCode").addEventListener("click", async () => {
+    const button = document.getElementById("copyCode");
+    const code = document.getElementById("arduinoCode").textContent;
+
+    try {
+      await navigator.clipboard.writeText(code);
+      button.textContent = "Copied!";
+      setTimeout(() => {
+        button.textContent = "Copy Code";
+      }, 1500);
+    } catch (error) {
+      button.textContent = "Copy failed";
+    }
+  });
+</script>    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer
+      class="mt-8 border-t border-slate-700 py-6 text-center text-sm text-slate-400"
+    >
+      Kadodzing
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

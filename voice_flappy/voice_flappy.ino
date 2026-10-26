@@ -1,18 +1,16 @@
 /*
  * Voice-Controlled Flappy Bird - Arduino
  *
- * Board: Arduino UNO R3 or UNO R4
+ * Board: Arduino UNO R4
  *
  * Wiring (same pins as the full version)
  *   MAX9814 mic        OUT -> A0     VDD -> 5V    GND -> GND
  *   HC-SR04            Trig -> D10   Echo -> D11  VCC -> 5V  GND -> GND
  *   START button       D12 -> button -> GND
- *   CALIBRATE button   A1  -> button -> GND
  *   MODE button        A2  -> button -> GND
  *
  * Buttons
  *   START      start / restart the game
- *   CALIBRATE  listen to the room for 2 s, then set the threshold automatically
  *   MODE       switch between voice mode and hand mode (ultrasonic)
  *
  * Messages sent to the website (115200 baud, one per line)
@@ -22,7 +20,6 @@
  *   DIST:23        hand distance in cm, smoothed (every 50 ms, 0 = no hand)
  *   MODE:VOICE / MODE:HAND
  *   CMD:START      START button pressed
- *   CAL:START / CAL:DONE
  *   THRESHOLD:350  current threshold
  *
  * Messages received from the website
@@ -34,7 +31,6 @@ const int MIC_PIN = A0;
 const int TRIG_PIN = 10;
 const int ECHO_PIN = 11;
 const int START_PIN = 12;
-const int CAL_PIN = A1;
 const int MODE_PIN = A2;
 
 const int SAMPLE_MS = 20;       // measure loudness over 20 ms
@@ -67,7 +63,6 @@ struct Button {
   unsigned long changed;  // when the reading last changed
 };
 Button startButton = {START_PIN, HIGH, false, 0};
-Button calButton   = {CAL_PIN,   HIGH, false, 0};
 Button modeButton  = {MODE_PIN,  HIGH, false, 0};
 
 void setup() {
@@ -75,7 +70,6 @@ void setup() {
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
   pinMode(START_PIN, INPUT_PULLUP);   // pressed = LOW
-  pinMode(CAL_PIN, INPUT_PULLUP);
   pinMode(MODE_PIN, INPUT_PULLUP);
   pinMode(LED_BUILTIN, OUTPUT);
 
@@ -186,9 +180,6 @@ void readButtons() {
   if (wasPressed(startButton)) {
     Serial.println("CMD:START");
   }
-  if (wasPressed(calButton)) {
-    calibrate();
-  }
   if (wasPressed(modeButton)) {
     handMode = !handMode;
     handNear = false;
@@ -197,7 +188,7 @@ void readButtons() {
 }
 
 bool anyButtonDown() {
-  return digitalRead(START_PIN) == LOW || digitalRead(CAL_PIN) == LOW || digitalRead(MODE_PIN) == LOW;
+  return digitalRead(START_PIN) == LOW || digitalRead(MODE_PIN) == LOW;
 }
 
 // True once per press. Button contacts bounce, so the reading must stay
@@ -215,24 +206,6 @@ bool wasPressed(Button &b) {
   bool justPressed = down && !b.isDown;
   b.isDown = down;
   return justPressed;
-}
-
-// Listen to the room for 2 seconds, then
-// threshold = loudest noise x 1.5 + 30  (between 40 and 1000)
-void calibrate() {
-  Serial.println("CAL:START");
-  delay(300);                          // let the button click fade
-
-  int loudest = 0;
-  for (int i = 0; i < 100; i++) {      // 100 x 20 ms = 2 seconds
-    int volume = readVolume();
-    Serial.println(volume);
-    loudest = max(loudest, volume);
-  }
-  threshold = constrain(loudest + loudest / 2 + 30, 40, 1000);
-
-  Serial.println("CAL:DONE");
-  printThreshold();
 }
 
 void printThreshold() {

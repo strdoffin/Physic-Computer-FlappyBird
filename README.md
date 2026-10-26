@@ -79,7 +79,8 @@ GND       --------> GND
 AO        --------> A0
 ```
 
-เปิดเบราว์เซอร์ที่ <http://localhost:3000>
+[เปิดเว็บ PROJECT KADODZING](https://youtu.be/e_6dGBdTekQ)
+[เปิดโปสเตอร์ PROJECT KADODZING]()
 
 
 <table>

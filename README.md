@@ -79,8 +79,8 @@ GND       --------> GND
 AO        --------> A0
 ```
 
-[เปิดเว็บ PROJECT KADODZING](https://youtu.be/e_6dGBdTekQ)
-[เปิดโปสเตอร์ PROJECT KADODZING]()
+# [เปิดเว็บ PROJECT KADODZING](https://youtu.be/e_6dGBdTekQ) </br>
+# [เปิดโปสเตอร์ PROJECT KADODZING](https://github.com/strdoffin/Physic-Computer-FlappyBird/blob/main/kadodzing.pdf)</br>
 
 
 <table>
